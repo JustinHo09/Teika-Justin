@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4380630201814257711}
   - component: {fileID: 373188902969323296}
+  - component: {fileID: -5987258336827868768}
+  - component: {fileID: -4178260771899348025}
   m_Layer: 0
   m_Name: pineapple
   m_TagString: Untagged
@@ -26,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8710042447466902514}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 2.25, z: 0}
+  m_LocalPosition: {x: 3.01, y: 2.26, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -91,3 +93,110 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!50 &-5987258336827868768
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8710042447466902514}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: 156e4b55f1dc847e9910c43e25079b5c, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
+--- !u!60 &-4178260771899348025
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8710042447466902514}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.18, y: 3.02}
+    newSize: {x: 2.18, y: 3.02}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.6451197, y: 0.6399795}
+      - {x: 0.49618393, y: 0.6982523}
+      - {x: 0.49593467, y: 0.96314853}
+      - {x: 0.57952243, y: 1.0348003}
+      - {x: 0.49356276, y: 1.0398499}
+      - {x: 0.6174243, y: 1.1008068}
+      - {x: 0.6141558, y: 1.2816168}
+      - {x: 0.41231135, y: 1.3559736}
+      - {x: 0.29804188, y: 1.2550622}
+      - {x: 0.10849902, y: 1.3483207}
+      - {x: -0.16170685, y: 1.4414228}
+      - {x: -0.3365345, y: 1.3505837}
+      - {x: -0.54864514, y: 1.306374}
+      - {x: -0.59729, y: 1.2209163}
+      - {x: -0.5104571, y: 0.8841345}
+      - {x: -0.47824812, y: 0.7517954}
+      - {x: -0.64824426, y: 0.648569}
+      - {x: -0.8727746, y: 0.36008608}
+      - {x: -0.9602875, y: 0.27384636}
+      - {x: -1.0149975, y: 0.08494488}
+      - {x: -1.0393884, y: -0.79962176}
+      - {x: -1.0123998, y: -0.85501933}
+      - {x: -0.8200515, y: -1.230098}
+      - {x: -0.47630084, y: -1.4568303}
+      - {x: -0.21849643, y: -1.4515642}
+      - {x: 0.43685132, y: -1.440348}
+      - {x: 0.43685114, y: -1.4308429}
+      - {x: 0.502868, y: -1.441902}
+      - {x: 0.7940018, y: -1.2899032}
+      - {x: 0.919782, y: -1.0477417}
+      - {x: 1.0163741, y: -0.87618136}
+      - {x: 1.0266886, y: 0.08048365}
+      - {x: 0.95934147, y: 0.25688672}
+  m_UseDelaunayMesh: 1
