@@ -955,7 +955,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79bfe5d85026e48fa9606fc271f07304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBehavior
-  speed: 0.5
+  speed: 0.1
+  fruit: {fileID: 2141597052}
+  offY: -0.6
 --- !u!212 &679576464
 SpriteRenderer:
   serializedVersion: 2
@@ -1024,7 +1026,7 @@ Transform:
   m_GameObject: {fileID: 679576462}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.07, y: 4.06, z: 0}
+  m_LocalPosition: {x: 0, y: 4.08, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1152,6 +1154,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5987258336827868768, guid: e825496f02bc9473fabb6619b0be3972, type: 3}
+      propertyPath: m_GravityScale
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4380630201814257711, guid: e825496f02bc9473fabb6619b0be3972, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.07
@@ -1760,6 +1766,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4aff78ef55da4a159b2759ed42c94ad, type: 3}
+--- !u!1 &2141597052 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 618524337037063912, guid: 4846708d5ceea49829c1072ab7efb47f, type: 3}
+  m_PrefabInstance: {fileID: 857233068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
