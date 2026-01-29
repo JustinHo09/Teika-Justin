@@ -4,6 +4,7 @@ public class PlayerBehavior : MonoBehaviour
 {
     public float speed;
     public GameObject fruit;
+    private GameObject currentFruit;
 
     public float offY = -0.6f;
     
@@ -15,23 +16,26 @@ public class PlayerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update() {
 
-        if (fruit != null) {
+        if (currentFruit != null) {
             
             //current player position
             Vector3 playerPos = transform.position;
             Vector3 fruitOffset = new Vector3(0.0f,offY,0.0f);
-            fruit.transform.position = playerPos + fruitOffset;
+            currentFruit.transform.position = playerPos + fruitOffset;
+        }
+        else{
+            currentFruit = Instantiate(fruit,new Vector3(0.0f,0.0f,0.0f), Quaternion.identity);
         }
 
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            Rigidbody2D body = fruit.GetComponent<Rigidbody2D>();
+            Rigidbody2D body = currentFruit.GetComponent<Rigidbody2D>();
             body.gravityScale = 1.0f;
             
-            Collider2D collider = fruit.GetComponent<Collider2D>();
+            Collider2D collider = currentFruit.GetComponent<Collider2D>();
             collider.enabled = true;
             
-            fruit = null;
+            currentFruit = null;
         }
         
         if (Keyboard.current.leftArrowKey.isPressed || Keyboard.current.aKey.isPressed){
