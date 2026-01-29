@@ -34,12 +34,12 @@ public class PlayerBehavior : MonoBehaviour
             fruit = null;
         }
         
-        if (Keyboard.current.leftArrowKey.isPressed){
+        if (Keyboard.current.leftArrowKey.isPressed || Keyboard.current.aKey.isPressed){
             Vector3 newPos = transform.position;
             newPos.x = newPos.x - speed;
             transform.position = newPos;
 
-        } else if (Keyboard.current.rightArrowKey.isPressed){
+        } else if (Keyboard.current.rightArrowKey.isPressed || Keyboard.current.dKey.isPressed){
             Vector3 newPos = transform.position;
             newPos.x = newPos.x + speed;
             transform.position = newPos;
