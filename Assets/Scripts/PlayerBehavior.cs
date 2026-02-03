@@ -2,9 +2,15 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerBehavior : MonoBehaviour
 {
+    // cherry, strawberry, grape, lemon, orange, apple, banna, pear, pineapple, watermelon
+    // we need to check if two fruits are touching, then we need to check if they are the same fruit
+    // we need to then remove the two touching fruit and replace it with the next fruit is if any
+    // use randgom generator and if it is in a range give us x fruit or y fruit
+    // give bigger fruit or make melon the largest and un-mergable
     public float speed;
-    public GameObject fruit;
     private GameObject currentFruit;
+
+    public GameObject[] fruits;
 
     public float offY = -0.6f;
     
@@ -15,7 +21,6 @@ public class PlayerBehavior : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-
         if (currentFruit != null) {
             
             //current player position
@@ -23,8 +28,10 @@ public class PlayerBehavior : MonoBehaviour
             Vector3 fruitOffset = new Vector3(0.0f,offY,0.0f);
             currentFruit.transform.position = playerPos + fruitOffset;
         }
-        else{
-            currentFruit = Instantiate(fruit,new Vector3(0.0f,0.0f,0.0f), Quaternion.identity);
+        else {
+            int choice = Random.Range(0, fruits.Length);
+            
+            currentFruit = Instantiate(fruits[choice],new Vector3(0.0f,0.0f,0.0f), Quaternion.identity);
         }
 
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
