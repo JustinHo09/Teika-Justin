@@ -12,13 +12,14 @@ public class PlayerBehavior : MonoBehaviour
 
     public GameObject[] fruits;
 
+    private float startTime;
     public float min;
     public float max;
     public float offY = -0.6f;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
-        
+        startTime = 0.0f;
     }
 
     // Update is called once per frame
