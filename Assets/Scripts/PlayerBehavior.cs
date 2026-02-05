@@ -12,6 +12,8 @@ public class PlayerBehavior : MonoBehaviour
 
     public GameObject[] fruits;
 
+    public float min;
+    public float max;
     public float offY = -0.6f;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -21,6 +23,9 @@ public class PlayerBehavior : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+    float offset= 0.0f;
+        
+        //Gets the fruit for the player
         if (currentFruit != null) {
             
             //current player position
@@ -34,6 +39,7 @@ public class PlayerBehavior : MonoBehaviour
             currentFruit = Instantiate(fruits[choice],new Vector3(0.0f,0.0f,0.0f), Quaternion.identity);
         }
 
+        // Drops the fruit
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             Rigidbody2D body = currentFruit.GetComponent<Rigidbody2D>();
@@ -45,15 +51,29 @@ public class PlayerBehavior : MonoBehaviour
             currentFruit = null;
         }
         
-        if (Keyboard.current.leftArrowKey.isPressed || Keyboard.current.aKey.isPressed){
-            Vector3 newPos = transform.position;
-            newPos.x = newPos.x - speed;
-            transform.position = newPos;
+        // Moves the player left or right
+        if (Keyboard.current.leftArrowKey.isPressed || Keyboard.current.aKey.isPressed) {
+            offset = -speed;
 
-        } else if (Keyboard.current.rightArrowKey.isPressed || Keyboard.current.dKey.isPressed){
-            Vector3 newPos = transform.position;
-            newPos.x = newPos.x + speed;
-            transform.position = newPos;
         }
+        if (Keyboard.current.rightArrowKey.isPressed || Keyboard.current.dKey.isPressed) {
+            offset = speed;
+        }
+
+        Vector3 newPos = transform.position;
+        newPos.x = newPos.x + offset;
+        //prevents movement too far right;
+        if (newPos.x > max) {
+            newPos.x = max;
+            
+        }
+        //prevents movement too far left;
+        if (newPos.x < min) {
+            newPos.x = min;
+            
+        }
+
+        transform.position = newPos;
+
     }
 }

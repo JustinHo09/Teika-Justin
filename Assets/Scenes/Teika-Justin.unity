@@ -955,8 +955,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79bfe5d85026e48fa9606fc271f07304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBehavior
-  speed: 0.1
-  fruit: {fileID: 618524337037063912, guid: 4846708d5ceea49829c1072ab7efb47f, type: 3}
+  speed: 0.01
+  fruits:
+  - {fileID: 8446781647583274259, guid: 854f9cc50f6894d4c9e9395b608ec007, type: 3}
+  - {fileID: 9123175767712166954, guid: 0ffa2343ab5e0491a9f385fa02840b8c, type: 3}
+  - {fileID: 2802250754758843528, guid: 4986c8dcde8b346199ad5eb0b6eff29b, type: 3}
+  - {fileID: 8383632010901330703, guid: e92997ab16a8144c5bd82e0a16255528, type: 3}
+  - {fileID: 618524337037063912, guid: 4846708d5ceea49829c1072ab7efb47f, type: 3}
+  - {fileID: 3616890448361330974, guid: e1015553631784c29a07e4d917a71060, type: 3}
+  - {fileID: 8395205209442515775, guid: d4aff78ef55da4a159b2759ed42c94ad, type: 3}
+  - {fileID: 5700875156658462102, guid: 0e837953e457d40a5ad1c7174c721713, type: 3}
+  - {fileID: 8710042447466902514, guid: e825496f02bc9473fabb6619b0be3972, type: 3}
+  - {fileID: 7099275379909072076, guid: e9ff21b83f9cd43bb9ffbd9c0c61b423, type: 3}
+  min: -3.72
+  max: 3.644
   offY: -0.6
 --- !u!212 &679576464
 SpriteRenderer:
@@ -1682,7 +1694,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0.67069244, b: 0.3254717, a: 1}
