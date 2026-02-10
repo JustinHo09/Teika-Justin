@@ -12,14 +12,16 @@ public class PlayerBehavior : MonoBehaviour
 
     public GameObject[] fruits;
 
-    private float startTime;
+    private float startTime = 0.0f;
     public float min;
     public float max;
     public float offY = -0.6f;
+    //public int move;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         startTime = 0.0f;
+        //move =0;//0 means you can move in either direction
     }
 
     // Update is called once per frame
@@ -53,11 +55,16 @@ public class PlayerBehavior : MonoBehaviour
         }
         
         // Moves the player left or right
-        if (Keyboard.current.leftArrowKey.isPressed || Keyboard.current.aKey.isPressed) {
+        bool left = (Keyboard.current.leftArrowKey.isPressed || Keyboard.current.aKey.isPressed);
+                    //&& move != 1;
+        if (left == true) {
             offset = -speed;
 
         }
-        if (Keyboard.current.rightArrowKey.isPressed || Keyboard.current.dKey.isPressed) {
+
+        bool right = (Keyboard.current.rightArrowKey.isPressed || Keyboard.current.dKey.isPressed);
+                     //&& move != 2;
+        if (right == true) {
             offset = speed;
         }
 
@@ -77,4 +84,25 @@ public class PlayerBehavior : MonoBehaviour
         transform.position = newPos;
 
     }
+    
+    // private void onCollisionEnter2d(Collision2D other){
+    //     if (other.gameObject.CompareTag("LB")) {
+    //         move = 1; // Cannot move left
+    //     } else if (other.gameObject.CompareTag("RB")) {
+    //         move = 2;
+    //     }
+    // }
+    //
+    // private void onCollisionStay2d(Collision2D other){
+    //     //if (other.gameObject){
+    //         
+    //     //}
+    // }
+    
+    // private void onCollisionExit2d(Collision2D other){
+    //     if (other.gameObject.CompareTag("LB") || other.gameObject.CompareTag("RB")) {
+    //         move = 0; // can move left and right
+    //     }
+    // }
+    
 }
