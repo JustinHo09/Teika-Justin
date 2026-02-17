@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7539139240326877879, guid: e825496f02bc9473fabb6619b0be3972, type: 3}
+      propertyPath: fruitType
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -4178260771899348025, guid: e825496f02bc9473fabb6619b0be3972, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 2.42
