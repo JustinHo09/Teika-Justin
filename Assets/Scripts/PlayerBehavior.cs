@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 public class PlayerBehavior : MonoBehaviour
 {
     // cherry, strawberry, grape, lemon, orange, apple, banna, pear, pineapple, watermelon
@@ -16,11 +17,19 @@ public class PlayerBehavior : MonoBehaviour
     public float min;
     public float max;
     public float offY = -0.6f;
+    
+    public int[] points;
+    public int totalScore;
+    public GameObject scoreBoard;
+
+    public TMP_Text textField;
     //public int move;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         startTime = 0.0f;
+        totalScore = 0;
+        textField.SetText("Score: " + totalScore);
         //move =0;//0 means you can move in either direction
     }
 
@@ -83,6 +92,11 @@ public class PlayerBehavior : MonoBehaviour
 
         transform.position = newPos;
 
+    }
+
+    public void updateScore(int index) {
+        totalScore = totalScore + points[index];
+        textField.SetText("Score: " + totalScore);
     }
     
     // private void onCollisionEnter2d(Collision2D other){

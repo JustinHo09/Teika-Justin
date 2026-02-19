@@ -5,6 +5,7 @@ public class FruitBehavior : MonoBehaviour
 	public GameObject[] fruits;
 	public int fruitType;
 
+	// Fruit point order: 2,4,8,16,32,64,128,256,512
     //public float timeOut;
     //public float timeStart;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,13 +20,14 @@ public class FruitBehavior : MonoBehaviour
 
 
 	private void OnCollisionEnter2D (Collision2D other){
-		if(other.gameObject.CompareTag("Fruit"))
-		{
+		if(other.gameObject.CompareTag("Fruit")) {
 			int otherType = other.gameObject.GetComponent<FruitBehavior>().fruitType;
 			if(otherType == fruitType && fruitType < fruits.Length-1) {
+
 				if (gameObject.transform.position.y < other.transform.position.y ||
 				    (gameObject.transform.position.y == other.transform.position.y &&
 				     gameObject.transform.position.x < other.transform.position.x)) {
+
 					// create the fruit
 					int choice = fruitType + 1;
 					GameObject currentFruit = Instantiate(fruits[choice], Vector3.Lerp(
@@ -34,6 +36,9 @@ public class FruitBehavior : MonoBehaviour
 					currentFruit.GetComponent<Collider2D>().enabled = true;
 					currentFruit.GetComponent<Rigidbody2D>().gravityScale = 1.0f;
 
+					GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehavior>().updateScore(fruitType);
+
+					//Destroy both fruits
 					Destroy(other.gameObject);
 					Destroy(gameObject);
 				}
