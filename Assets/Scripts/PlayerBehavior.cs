@@ -17,6 +17,8 @@ public class PlayerBehavior : MonoBehaviour
     public float min;
     public float max;
     public float offY = -0.6f;
+
+    public AudioSource dropping;
     
     public int[] points;
     public int totalScore;
