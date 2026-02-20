@@ -9,9 +9,7 @@ public class BorderBehavior : MonoBehaviour
 
     public GameObject gameOver;
     
-    void Start()
-    {
-        
+    void Start() {
     }
 
     // Update is called once per frame

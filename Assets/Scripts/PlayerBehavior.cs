@@ -1,6 +1,9 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using Random = UnityEngine.Random;
+
 public class PlayerBehavior : MonoBehaviour
 {
     // cherry, strawberry, grape, lemon, orange, apple, banna, pear, pineapple, watermelon
@@ -56,12 +59,16 @@ public class PlayerBehavior : MonoBehaviour
         // Drops the fruit
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
+            
+            
             Rigidbody2D body = currentFruit.GetComponent<Rigidbody2D>();
             body.gravityScale = 1.0f;
             
             Collider2D collider = currentFruit.GetComponent<Collider2D>();
             collider.enabled = true;
             
+			dropping.Play();
+
             currentFruit = null;
         }
         
@@ -101,6 +108,16 @@ public class PlayerBehavior : MonoBehaviour
         textField.SetText("Score: " + totalScore);
     }
     
+    // Ends the script after game ends
+    public void OnTriggerStay2D(Collider2D other){
+        if (other.gameObject.CompareTag("TopBorder")) {
+            if (other.gameObject.GetComponent<BorderBehavior>().gameOver.activeInHierarchy) {
+                this.enabled = false;
+            }
+        }
+    }
+
+
     // private void onCollisionEnter2d(Collision2D other){
     //     if (other.gameObject.CompareTag("LB")) {
     //         move = 1; // Cannot move left
