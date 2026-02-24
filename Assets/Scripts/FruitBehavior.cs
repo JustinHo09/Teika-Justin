@@ -5,7 +5,7 @@ public class FruitBehavior : MonoBehaviour
 	public GameObject[] fruits;
 	public int fruitType;
 	
-	public AudioSource merge;
+	private AudioSource merge;
 
 
 	// Fruit point order: 2,4,8,16,32,64,128,256,512
@@ -14,7 +14,7 @@ public class FruitBehavior : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-	    merge = GetComponent<AudioSource>();
+	    merge = GameObject.FindGameObjectWithTag("Player").GetComponents<AudioSource>()[1];
         fruits = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehavior>().fruits;
     }
 

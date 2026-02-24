@@ -22,6 +22,7 @@ public class PlayerBehavior : MonoBehaviour
     public float offY = -0.6f;
 
     public AudioSource dropping;
+    public AudioSource merging;
     
     public int[] points;
     public int totalScore;
