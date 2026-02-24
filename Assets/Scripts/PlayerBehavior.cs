@@ -15,8 +15,7 @@ public class PlayerBehavior : MonoBehaviour
     private GameObject currentFruit;
 
     public GameObject[] fruits;
-
-    private float startTime = 0.0f;
+    
     public float min;
     public float max;
     public float offY = -0.6f;
@@ -27,13 +26,12 @@ public class PlayerBehavior : MonoBehaviour
     public int[] points;
     public int totalScore;
     public GameObject scoreBoard;
-
+    
     public TMP_Text textField;
     //public int move;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
-        startTime = 0.0f;
         totalScore = 0;
         textField.SetText("Score: " + totalScore);
         //move =0;//0 means you can move in either direction
@@ -51,9 +49,9 @@ public class PlayerBehavior : MonoBehaviour
             Vector3 fruitOffset = new Vector3(0.0f,offY,0.0f);
             currentFruit.transform.position = playerPos + fruitOffset;
         }
-        else {
-            int choice = Random.Range(0, fruits.Length);
-            
+        else
+        {
+            int choice = GameObject.FindGameObjectWithTag("Queue").GetComponent<QueueManager>().updateQueue();
             currentFruit = Instantiate(fruits[choice],new Vector3(0.0f,0.0f,0.0f), Quaternion.identity);
         }
 
