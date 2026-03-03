@@ -9,6 +9,7 @@ TagManager:
   - Fruit
   - TopBorder
   - Queue
+  - Joker
   layers:
   - Default
   - TransparentFX
