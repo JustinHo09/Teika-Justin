@@ -28,13 +28,13 @@ public class PlayerBehavior : MonoBehaviour
     public GameObject scoreBoard;
     
     public TMP_Text textField;
-    //public int move;
+    public int move;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         totalScore = 0;
         textField.SetText("Score: " + totalScore);
-        //move =0;//0 means you can move in either direction
+        move =0;//0 means you can move in either direction
     }
 
     // Update is called once per frame
@@ -70,15 +70,15 @@ public class PlayerBehavior : MonoBehaviour
         }
         
         // Moves the player left or right
-        bool left = (Keyboard.current.leftArrowKey.isPressed || Keyboard.current.aKey.isPressed);
-                    //&& move != 1;
+        bool left = (Keyboard.current.leftArrowKey.isPressed || Keyboard.current.aKey.isPressed)
+                    && move != 1;
         if (left == true) {
             offset = -speed;
 
         }
 
-        bool right = (Keyboard.current.rightArrowKey.isPressed || Keyboard.current.dKey.isPressed);
-                     //&& move != 2;
+        bool right = (Keyboard.current.rightArrowKey.isPressed || Keyboard.current.dKey.isPressed) 
+                     && move != 2;
         if (right == true) {
             offset = speed;
         }
@@ -86,15 +86,15 @@ public class PlayerBehavior : MonoBehaviour
         Vector3 newPos = transform.position;
         newPos.x = newPos.x + offset;
         //prevents movement too far right;
-        if (newPos.x > max) {
-            newPos.x = max;
-            
-        }
-        //prevents movement too far left;
-        if (newPos.x < min) {
-            newPos.x = min;
-            
-        }
+        // if (newPos.x > max) {
+        //     newPos.x = max;
+        //     
+        // }
+        // //prevents movement too far left;
+        // if (newPos.x < min) {
+        //     newPos.x = min;
+        //     
+        // }
 
         transform.position = newPos;
 
@@ -115,24 +115,20 @@ public class PlayerBehavior : MonoBehaviour
     }
 
 
-    // private void onCollisionEnter2d(Collision2D other){
-    //     if (other.gameObject.CompareTag("LB")) {
-    //         move = 1; // Cannot move left
-    //     } else if (other.gameObject.CompareTag("RB")) {
-    //         move = 2;
-    //     }
-    // }
-    //
-    // private void onCollisionStay2d(Collision2D other){
-    //     //if (other.gameObject){
-    //         
-    //     //}
-    // }
+    private void OnCollisionEnter2D(Collision2D other){
+        if (other.gameObject.CompareTag("LB")) {
+            move = 1; // Cannot move left
+        } 
+        
+        if (other.gameObject.CompareTag("RB")) {
+            move = 2; // Cannot move right
+        }
+    }
     
-    // private void onCollisionExit2d(Collision2D other){
-    //     if (other.gameObject.CompareTag("LB") || other.gameObject.CompareTag("RB")) {
-    //         move = 0; // can move left and right
-    //     }
-    // }
+    private void OnCollisionExit2D(Collision2D other){
+        if (other.gameObject.CompareTag("LB") || other.gameObject.CompareTag("RB")) {
+            move = 0; // can move left and right
+        }
+    }
     
 }
