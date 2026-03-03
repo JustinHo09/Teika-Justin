@@ -6,13 +6,21 @@ public class QueueManager : MonoBehaviour
 
     public int[] queue;
 
+    private int jokerPos;
+
+    private int jokerCounter;
+
     private SpriteRenderer[] childRenderers;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
+        jokerPos = GameObject.FindGameObjectWithTag("Player").GetComponent
+            <PlayerBehavior>().fruits.Length-1;
+        jokerCounter=0;
         queue = new int[7];
         for (int i = 0; i < 7; i++) {
             //Gives the valid objects for the preview
             queue[i] = Random.Range(0, 7);
+            jokerCounter++;
         }
 
         childRenderers = new SpriteRenderer[4];
@@ -25,7 +33,11 @@ public class QueueManager : MonoBehaviour
     void Update() {
         for (int i = 0; i < transform.childCount; i++)
         {
-            childRenderers[i].sprite = uis[queue[i]];
+            if (queue[i] == jokerPos) {
+                childRenderers[i].sprite = uis[uis.Length-1];
+            }else {
+                childRenderers[i].sprite = uis[queue[i]];
+            }
         }
     }
 
@@ -36,8 +48,14 @@ public class QueueManager : MonoBehaviour
             queue[i-1] = queue[i];
         }
 
-        queue[queue.Length - 1] = Random.Range(0, 7);
-        
+        if ((Random.Range(0, 50) == 0) && jokerCounter >= 20) {
+            queue[queue.Length - 1] = jokerPos;
+            jokerCounter = 0;
+        } else{
+            queue[queue.Length - 1] = Random.Range(0, 7);
+            jokerCounter++;
+        }
+
         return currentType;
     }
 }

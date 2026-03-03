@@ -43,7 +43,6 @@ public class PlayerBehavior : MonoBehaviour
         
         //Gets the fruit for the player
         if (currentFruit != null) {
-            
             //current player position
             Vector3 playerPos = transform.position;
             Vector3 fruitOffset = new Vector3(0.0f,offY,0.0f);
@@ -58,7 +57,6 @@ public class PlayerBehavior : MonoBehaviour
         // Drops the fruit
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            
             
             Rigidbody2D body = currentFruit.GetComponent<Rigidbody2D>();
             body.gravityScale = 1.0f;
