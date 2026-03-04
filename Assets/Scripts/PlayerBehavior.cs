@@ -28,6 +28,7 @@ public class PlayerBehavior : MonoBehaviour
     public GameObject scoreBoard;
     
     public TMP_Text textField;
+    public TMP_Text currentCombo;
     
     private int move;
     
@@ -66,6 +67,7 @@ public class PlayerBehavior : MonoBehaviour
         if (Keyboard.current.spaceKey.wasPressedThisFrame && (Time.time - currentTime > cooldown))
         {
             combos = 0;
+            currentCombo.SetText("COMBO: "+combos);
             
             Rigidbody2D body = currentFruit.GetComponent<Rigidbody2D>();
             body.gravityScale = 1.0f;
@@ -130,6 +132,7 @@ public class PlayerBehavior : MonoBehaviour
 
     public void Combo() {
         combos++;
+        currentCombo.SetText("COMBO: "+combos);
     }
 
 
