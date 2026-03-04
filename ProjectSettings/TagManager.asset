@@ -10,6 +10,7 @@ TagManager:
   - TopBorder
   - Queue
   - Joker
+  - GameOver
   layers:
   - Default
   - TransparentFX

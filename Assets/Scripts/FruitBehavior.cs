@@ -43,10 +43,12 @@ public class FruitBehavior : MonoBehaviour
 					currentFruit.GetComponent<Collider2D>().enabled = true;
 					currentFruit.GetComponent<Rigidbody2D>().gravityScale = 1.0f;
 
-					GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehavior>().updateScore(fruitType);
-
-					//Destroy both fruits
 					Destroy(other.gameObject);
+					
+					GameObject player = GameObject.FindGameObjectWithTag("Player");
+					player.GetComponent<PlayerBehavior>().Combo();
+					player.GetComponent<PlayerBehavior>().updateScore(fruitType);
+					
 					Destroy(gameObject);
 				}
 
@@ -63,11 +65,13 @@ public class FruitBehavior : MonoBehaviour
 					Quaternion.identity);
 				currentFruit.GetComponent<Collider2D>().enabled = true;
 				currentFruit.GetComponent<Rigidbody2D>().gravityScale = 1.0f;
-
-				GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehavior>().updateScore(fruitType);
-
-				//Destroy both fruits
+				
 				Destroy(other.gameObject);
+				GameObject player = GameObject.FindGameObjectWithTag("Player");
+				player.GetComponent<PlayerBehavior>().Combo();
+				player.GetComponent<PlayerBehavior>().updateScore(fruitType);
+				//Destroy both fruits
+				// Destroy(other.gameObject);
 				Destroy(gameObject);
 			}
 		}

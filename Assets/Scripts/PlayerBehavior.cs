@@ -28,13 +28,21 @@ public class PlayerBehavior : MonoBehaviour
     public GameObject scoreBoard;
     
     public TMP_Text textField;
-    public int move;
+    
+    private int move;
+    
+    public float cooldown;
+
+    private float currentTime;
+
+    public int combos;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         totalScore = 0;
         textField.SetText("Score: " + totalScore);
-        move =0;//0 means you can move in either direction
+        move = 0;
+        currentTime = 0.0f; //0 means you can move in either direction
     }
 
     // Update is called once per frame
@@ -55,8 +63,9 @@ public class PlayerBehavior : MonoBehaviour
         }
 
         // Drops the fruit
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && (Time.time - currentTime > cooldown))
         {
+            combos = 0;
             
             Rigidbody2D body = currentFruit.GetComponent<Rigidbody2D>();
             body.gravityScale = 1.0f;
@@ -67,6 +76,7 @@ public class PlayerBehavior : MonoBehaviour
 			dropping.Play();
 
             currentFruit = null;
+            currentTime = Time.time;
         }
         
         // Moves the player left or right
@@ -101,7 +111,11 @@ public class PlayerBehavior : MonoBehaviour
     }
 
     public void updateScore(int index) {
-        totalScore = totalScore + points[index];
+        int bonus=0;
+        if (combos >= 2) {
+            bonus = (points[index] * 3)/2;
+        }
+        totalScore = totalScore + bonus +points[index];
         textField.SetText("Score: " + totalScore);
     }
     
@@ -112,6 +126,10 @@ public class PlayerBehavior : MonoBehaviour
                 this.enabled = false;
             }
         }
+    }
+
+    public void Combo() {
+        combos++;
     }
 
 
