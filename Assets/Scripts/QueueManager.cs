@@ -9,6 +9,8 @@ public class QueueManager : MonoBehaviour
     private int jokerPos;
 
     private int jokerCounter;
+    
+    public int maxFruit;
 
     private SpriteRenderer[] childRenderers;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,7 +21,7 @@ public class QueueManager : MonoBehaviour
         queue = new int[7];
         for (int i = 0; i < 7; i++) {
             //Gives the valid objects for the preview
-            queue[i] = Random.Range(0, 7);
+            queue[i] = Random.Range(0, maxFruit+1);
             jokerCounter++;
         }
 
@@ -52,7 +54,7 @@ public class QueueManager : MonoBehaviour
             queue[queue.Length - 1] = jokerPos;
             jokerCounter = 0;
         } else{
-            queue[queue.Length - 1] = Random.Range(0, 7);
+            queue[queue.Length - 1] = Random.Range(0, maxFruit+1);
             jokerCounter++;
         }
 

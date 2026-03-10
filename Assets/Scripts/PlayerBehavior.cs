@@ -38,12 +38,16 @@ public class PlayerBehavior : MonoBehaviour
 
     public int combos;
     
+    private QueueManager queue;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         totalScore = 0;
         textField.SetText("Score: " + totalScore);
         move = 0;
-        currentTime = 0.0f; //0 means you can move in either direction
+        currentTime = 0.0f;
+        queue = GameObject.FindGameObjectWithTag("Queue").GetComponent<QueueManager>();
+        //0 means you can move in either direction
     }
 
     // Update is called once per frame
@@ -59,7 +63,7 @@ public class PlayerBehavior : MonoBehaviour
         }
         else
         {
-            int choice = GameObject.FindGameObjectWithTag("Queue").GetComponent<QueueManager>().updateQueue();
+            int choice = queue.updateQueue();
             currentFruit = Instantiate(fruits[choice],new Vector3(0.0f,0.0f,0.0f), Quaternion.identity);
         }
 

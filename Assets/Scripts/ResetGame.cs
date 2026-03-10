@@ -49,7 +49,11 @@ public class ResetGame : MonoBehaviour
         
         player.GetComponent<PlayerBehavior>().enabled = true;
         player.GetComponent<PlayerBehavior>().totalScore = 0;
-        player.GetComponent<PlayerBehavior>().textField.SetText("Score: " + 0);
+        player.GetComponent<PlayerBehavior>().textField.SetText("SCORE: " + 0);
+
+        player.GetComponent<PlayerBehavior>().combos = 0;
+        player.GetComponent<PlayerBehavior>().currentCombo.SetText("COMBO: " + 0);
+
         GameObject.FindGameObjectWithTag("GameOver").SetActive(false);
     }
 }
