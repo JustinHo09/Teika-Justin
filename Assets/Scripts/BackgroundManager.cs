@@ -6,12 +6,18 @@ public class BackgroundManager : MonoBehaviour
     
     public float speed;
 
-    public GameObject[] backgrounds;
+    private GameObject[] backgrounds;
 
     public float pivotPoint;
+
+    public float scale;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
+        float pivotPoint = scale * 16 * -0.32f;
+        backgroundPrefab.transform.localScale = new Vector3(scale, scale, scale);
         backgrounds = new GameObject[3];
 
         
@@ -27,6 +33,16 @@ public class BackgroundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        for (int i = 0; i < 3; i++)
+        {
+            float xPos = backgrounds[i].transform.position.x + speed;
+            float yPos = backgrounds[i].transform.position.y + speed;
+            Vector3 pos = new Vector3(xPos, yPos,0.0f);
+            if (backgrounds[i].transform.position.x > -1 * (pivotPoint / 2))
+            {
+                pos = new Vector3(pivotPoint, pivotPoint, 0.0f);
+            }
+            backgrounds[i].transform.position = pos;
+        }
     }
 }
