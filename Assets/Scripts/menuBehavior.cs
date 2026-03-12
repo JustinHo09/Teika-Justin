@@ -19,4 +19,10 @@ public class menuBehavior : MonoBehaviour
         SceneManager.LoadScene("Teika-Justin");
     }
     
+    public void goToMenu() {
+
+		SceneManager.LoadScene("MainMenu");
+}
+
+    
 }

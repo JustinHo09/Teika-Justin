@@ -7,7 +7,6 @@ public class FruitBehavior : MonoBehaviour
 	
 	private AudioSource merge;
 
-
 	// Fruit point order: 2,4,8,16,32,64,128,256,512
     //public float timeOut;
     //public float timeStart;

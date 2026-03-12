@@ -117,12 +117,14 @@ public class PlayerBehavior : MonoBehaviour
     }
 
     public void updateScore(int index) {
-        int bonus=0;
-        if (combos >= 2) {
-            bonus = (points[index] * 3)/2;
+        if(this.enabled == true) {
+            int bonus=0;
+            if (combos >= 2) {
+                bonus = (points[index] * 3)/2;
+            }
+            totalScore = totalScore + bonus +points[index];
+            textField.SetText("Score: " + totalScore);
         }
-        totalScore = totalScore + bonus +points[index];
-        textField.SetText("Score: " + totalScore);
     }
     
     // Ends the script after game ends
@@ -135,8 +137,10 @@ public class PlayerBehavior : MonoBehaviour
     }
 
     public void Combo() {
-        combos++;
-        currentCombo.SetText("COMBO: "+combos);
+        if(this.enabled == true) {
+            combos++;
+            currentCombo.SetText("COMBO: "+combos);
+        }
     }
 
 
