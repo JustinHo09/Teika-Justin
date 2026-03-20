@@ -120,7 +120,7 @@ public class PlayerBehavior : MonoBehaviour
         if(this.enabled == true) {
             int bonus=0;
             if (combos >= 2) {
-                bonus = (points[index] * 3)/2;
+                bonus = (points[index] * 4);
             }
             totalScore = totalScore + bonus +points[index];
             textField.SetText("Score: " + totalScore);
