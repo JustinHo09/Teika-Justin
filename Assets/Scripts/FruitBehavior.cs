@@ -13,6 +13,7 @@ public class FruitBehavior : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // Gets the fruits array and merge audio source from the player
 	    merge = GameObject.FindGameObjectWithTag("Player").GetComponents<AudioSource>()[1];
         fruits = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehavior>().fruits;
     }
@@ -23,15 +24,20 @@ public class FruitBehavior : MonoBehaviour
     }
 
 
+    // Check fruit collisions for merge
 	private void OnCollisionEnter2D (Collision2D other){
 		if(other.gameObject.CompareTag("Fruit")) {
 			int otherType = other.gameObject.GetComponent<FruitBehavior>().fruitType;
+			
+			// merge if the two objects touching merge.
 			if(otherType == fruitType && fruitType < fruits.Length-2) {
 
+                // if it is the top fruit then merge 
 				if (gameObject.transform.position.y < other.transform.position.y ||
 				    (gameObject.transform.position.y == other.transform.position.y &&
 				     gameObject.transform.position.x < other.transform.position.x)) {
 
+					// play merge audio
 					merge.Play();
 
 					// create the fruit
@@ -42,9 +48,11 @@ public class FruitBehavior : MonoBehaviour
 					currentFruit.GetComponent<Collider2D>().enabled = true;
 					currentFruit.GetComponent<Rigidbody2D>().gravityScale = 1.0f;
 
+					// Destroy the other one
 					Destroy(other.gameObject);
 					
 					GameObject player = GameObject.FindGameObjectWithTag("Player");
+					// update the combo and score
 					player.GetComponent<PlayerBehavior>().Combo();
 					player.GetComponent<PlayerBehavior>().updateScore(fruitType);
 					
@@ -52,7 +60,9 @@ public class FruitBehavior : MonoBehaviour
 				}
 
 			}
+			// merge if the fruit is touching a joker
 		}else if(other.gameObject.CompareTag("Joker")) {
+			// only merge if it is not the biggest fruit
 			if (fruitType < fruits.Length - 2) {
 				merge.Play();
 
@@ -65,8 +75,12 @@ public class FruitBehavior : MonoBehaviour
 				currentFruit.GetComponent<Collider2D>().enabled = true;
 				currentFruit.GetComponent<Rigidbody2D>().gravityScale = 1.0f;
 				
+				// get rid of the joker
 				Destroy(other.gameObject);
+				
 				GameObject player = GameObject.FindGameObjectWithTag("Player");
+				
+				//update combo and score.
 				player.GetComponent<PlayerBehavior>().Combo();
 				player.GetComponent<PlayerBehavior>().updateScore(fruitType);
 				//Destroy both fruits

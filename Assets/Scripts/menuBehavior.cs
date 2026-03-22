@@ -14,11 +14,13 @@ public class menuBehavior : MonoBehaviour
         
     }
 
+    // Goes from the current scene to the main game scene.
     public void goToGame()
     {
         SceneManager.LoadScene("Teika-Justin");
     }
     
+    // Goes from the current scene to the menu scene.
     public void goToMenu() {
 
 		SceneManager.LoadScene("MainMenu");

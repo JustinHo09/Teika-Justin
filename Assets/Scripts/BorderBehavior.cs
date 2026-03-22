@@ -18,12 +18,15 @@ public class BorderBehavior : MonoBehaviour
         
     }
     
+    // if a fruit touches the border start a timer
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Fruit")) {
             timeStart = Time.time;
         }
     }
     
+        // if they tough longer than the time out time, then end make the
+        // game over message appear.
         private void OnTriggerStay2D(Collider2D other) {
             if (other.gameObject.CompareTag("Fruit")) {
                 float current = Time.time;

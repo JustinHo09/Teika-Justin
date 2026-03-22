@@ -70,9 +70,11 @@ public class PlayerBehavior : MonoBehaviour
         // Drops the fruit
         if (Keyboard.current.spaceKey.wasPressedThisFrame && (Time.time - currentTime > cooldown))
         {
+            // reset the combo each time a fruit is dropped
             combos = 0;
             currentCombo.SetText("COMBO: "+combos);
             
+            // re-enables hte fruit's physics and plays a dropping noise
             Rigidbody2D body = currentFruit.GetComponent<Rigidbody2D>();
             body.gravityScale = 1.0f;
             
@@ -116,6 +118,7 @@ public class PlayerBehavior : MonoBehaviour
 
     }
 
+    // Updates the score board
     public void updateScore(int index) {
         if(this.enabled == true) {
             int bonus=0;
@@ -136,6 +139,7 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
+    // Updates the combo board
     public void Combo() {
         if(this.enabled == true) {
             combos++;
@@ -144,6 +148,8 @@ public class PlayerBehavior : MonoBehaviour
     }
 
 
+
+    // Prevents movement past the left and right border
     private void OnCollisionEnter2D(Collision2D other){
         if (other.gameObject.CompareTag("LB")) {
             move = 1; // Cannot move left
@@ -154,6 +160,8 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
     
+    // Allows for movement once they stop touching the 
+    // left and right borders.
     private void OnCollisionExit2D(Collision2D other){
         if (other.gameObject.CompareTag("LB") || other.gameObject.CompareTag("RB")) {
             move = 0; // can move left and right
